@@ -1,0 +1,56 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #444;
+    }
+
+    button {
+      font-size: 18px;
+      background-color: #8a05be;
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      margin-bottom: 10px;
+    }
+  </style>
+
+  <script>
+    function scan() {
+      window.ReactNativeWebView.postMessage("scan");
+    }
+  </script>
+
+  <script>
+    document.addEventListener("onScan", function (event) {
+      document.getElementById('data').innerHTML = event.detail;
+    });
+  </script>
+</head>
+
+<body style="padding: 50px;">
+  <button onclick="scan()">Escanear QR Code</button>
+  <h3>Conteúdo:</h3>
+  <label id="data">---</label>
+</body>
+
+</html>
